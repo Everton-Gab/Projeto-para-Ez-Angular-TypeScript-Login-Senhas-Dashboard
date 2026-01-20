@@ -1,59 +1,46 @@
-# AuthDashboardApp
+Auth & Dashboard App - Angular 17+
+Este projeto consiste em uma aplicação Angular completa com fluxo de autenticação (Login, Primeiro Acesso, Recuperação de Senha) e um Dashboard funcional com KPIs e listagem de pedidos.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.0.
+-------Como Rodar o Projeto
+Instalar dependências:
 
-## Development server
+Bash
 
-To start a local development server, run:
+npm install
+Iniciar o servidor de desenvolvimento:
 
-```bash
+Bash
+
 ng serve
-```
+Acessar no navegador: Abra http://localhost:4200. A aplicação redirecionará automaticamente para /auth devido ao AuthGuard.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+-------Dados para Teste
+Para validar as regras de negócio e o ApiMockService, utilize os seguintes dados:
 
-## Code scaffolding
+Código de Confirmação (Mock): 123456
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Usuário Sugerido: teste@exemplo.com
 
-```bash
-ng generate component component-name
-```
+Senha Sugerida: senha1234 (Mínimo de 8 caracteres)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Nota: O Login só funcionará se você primeiro realizar o fluxo de "Primeiro Acesso" para simular a criação da senha no sistema.
 
-```bash
-ng generate --help
-```
+-------Decisões Técnicas
+Arquitetura: Organizado em camadas (Core, Auth, Dashboard) para garantir a separação de responsabilidades.
 
-## Building
+Segurança: Utilização de AuthGuard para proteger a rota /dashboard, verificando a existência de um token no localStorage.
 
-To build the project run:
+Formulários: Uso de Reactive Forms com validadores customizados para comparação de senhas e indicadores de força.
 
-```bash
-ng build
-```
+Simulação de API: Implementação do ApiMockService utilizando Observables com operadores of e delay (600ms a 1200ms) para simular latência de rede real.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Tratamento de Estados: O Dashboard gerencia estados de Loading, Erro e Vazio para garantir uma melhor experiência do usuário.
 
-## Running unit tests
+-------Melhorias Futuras
+Implementação de um backend real (Node.js/Firebase).
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Adição de gráficos avançados utilizando bibliotecas como Chart.js ou ngx-charts.
 
-```bash
-ng test
-```
+Aprimoramento do design responsivo com Tailwind CSS ou Angular Material.
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Internacionalização (i18n) para suporte a múltiplos idiomas.
